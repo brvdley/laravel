@@ -14,15 +14,16 @@ class PostsController extends Controller
             logger($query->sql, $query->bindings);
         });*/
         //view all posts from the post class and posts view (default route)
-        return view('posts', [
-            'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
-            'categories' => Category::all(),
-            'currentCategory' => Category::firstWhere('slug', request('category'))
+        return view('posts.index', [
+            'posts' => Post::latest()->filter(
+                request(['search', 'category', 'author'])
+            )->paginate(6)->withQueryString(),
+
         ]);
     }
 
     public function show(Post $post) {
-        return view('post', [
+        return view('posts.show', [
             'post' => $post
         ]);
     }
