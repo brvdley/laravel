@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\PostCommentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::get('/', [PostsController::class, 'index'])->name('home');
 
 //get a single post based off of the slug from the post view & class
 Route::get('post/{post:slug}', [PostsController::class, 'show']);
+Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
 //Register user route
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth !important;
+}
+
 .read {
     white-space: nowrap;
+}
+
+.avatar {
+    width: 60px !important;
+    height: auto !important;
+}
+
+.comment-submit:hover {
+    opacity: .8;
+    cursor: pointer;
 }

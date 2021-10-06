@@ -31867,8 +31867,22 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html{
+  scroll-behavior: smooth !important;
+}
+
 .read {
   white-space: nowrap;
+}
+
+.avatar {
+  width: 60px !important;
+  height: auto !important;
+}
+
+.comment-submit:hover {
+  opacity: .8;
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {

@@ -15,10 +15,13 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('post_id');
-            $table->unsignedBigInteger('user_id'); // when declaring foreign id's make sure the type is the same
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            // $table->unsignedBigInteger('user_id'); // when declaring foreign id's make sure the type is the same
             $table->text('body');
             $table->timestamps();
+
+
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
 {
@@ -12,22 +13,19 @@ class SessionsController extends Controller
     }
 
     public function store() { // attempt to authenticate and login user
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
-
-        if (! auth()->attempt(
-            request()->validate([
-                'email' => 'required|email',
-                'password' => 'required'
-            ])
-
-        )) {
-            return back()->withInput()
-                    ->withErrors(['email' => 'Incorrect Credentials. Try again.']);
+        if (!auth()->attempt($attributes)) {
+            throw ValidationException::withMessages([
+                'email' => 'Incorrect Credentials. Try again.'
+            ]);
         }
-        else {
-            session()->regenerate();
+
+        session()->regenerate();
             return redirect('/')->with('success', 'Login Successful');
-        }
  }
     public function destroy() {
         auth()->logout();

@@ -27,4 +27,6 @@ class PostsController extends Controller
             'post' => $post
         ]);
     }
+
+    //restful actions - index, show, create, store, edit, update, destroy
 }
