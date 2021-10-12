@@ -40,7 +40,7 @@ Route::post('newsletter', NewsletterController::class);
 
 //admin
 Route::get('admin/posts/create', [PostsController::class, 'create'])->middleware('admin');
-Route::post('admin/posts', [PostsController::class, 'store'])->middleware('admin');
+Route::post('admin/posts', [PostsController::class, 'store'])->middleware('admin'); // patch and delete instead of get and post for update or delete
 
 
 
