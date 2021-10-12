@@ -18,6 +18,6 @@ class PostCommentsController extends Controller
         'user_id' => request()->user()->id,
         'body' => request('body')
        ]);
-       return back()-with('success', 'Comment added successfully!');
+       return back()->with('success', 'Comment added successfully!');
     }
 }

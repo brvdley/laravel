@@ -17,3 +17,4 @@ docker-compose.yaml
 /storage/dbdata
 /data
 /dbdata
+config/services.php

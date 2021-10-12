@@ -23,6 +23,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        $image = $this->faker->randomElement([rand(1, 5)]);
         return [
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
@@ -30,6 +31,7 @@ class PostFactory extends Factory
             'slug' => $this->faker->slug(),
             'excerpt' => collect($this->faker->paragraphs(2))->map(fn($item) => "<p>{$item}</p>")->implode(''),
             'body' => collect($this->faker->paragraphs(6))->map(fn($item) => "<p>{$item}</p>")->implode(''),
+            'thumbnail' => 'thumbnails/illustration-' . $image . '.png',
         ];
     }
 }

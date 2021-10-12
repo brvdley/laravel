@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $with = ['category', 'author'];
 
-    protected $fillable = ['slug', 'title', 'excerpt', 'body', 'category_id'];
+    protected $fillable = ['title', 'body', 'user_id', 'category_id', 'excerpt', 'slug', 'thumbnail'];
 
     public function scopeFilter($query, array $filters) { //Post::newQuery()->filter()
         $query->when($filters['search'] ?? false, fn($query, $search) =>
